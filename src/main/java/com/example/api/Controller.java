@@ -27,7 +27,7 @@ public class Controller {
     QrCodeGenerator.generateQRCodeImage(codeText, width, height, QR_CODE_IMAGE_PATH);
   }
   // en enlevant le produces ça retourne le bytearray qui peut potentiellement être reconstruit
- @GetMapping(value = "/genrateQRCode/{codeText}/{mail}/{width}/{height}")//,produces = MediaType.IMAGE_PNG_VALUE)
+ @GetMapping(value = "/reservationBillets/genrateQRCode/{codeText}/{mail}/{width}/{height}")//,produces = MediaType.IMAGE_PNG_VALUE)
   public ResponseEntity<byte[]> generateQRCode(
       @PathVariable("codeText") String codeText,
      @PathVariable("mail") String mail,
