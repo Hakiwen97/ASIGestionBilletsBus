@@ -1,22 +1,38 @@
 package com.example.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.jdi.ObjectCollectedException;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 
 public class TicketReservationWriter {
 
 
-  public void writeTicket(String ligne) {
-    JSONObject employeeDetails = new JSONObject();
+  public void writeTicket(String ligne) throws IOException, ParseException {
 
-    employeeDetails.put("firstName", "Lokesh");
-    employeeDetails.put("lastName", "Gupta");
-    employeeDetails.put("website", "howtodoinjava.com");
+    //JSONParser parser=new JSONParser();
+    //JSONArray a = (JSONArray) parser.parse(new FileReader("C:\\ASI\\ASIGestionBilletsBus\\tickets\\tickets.json"));
+
+    JSONObject ticket = new JSONObject();
+
+    ticket.put("ligne", ligne);
+
+   // a.add(ticket);
+
+
+
 
     try (
-        FileWriter file = new FileWriter("employees.json")) {
-      file.write(employeeDetails.toJSONString());
+
+        FileWriter file = new FileWriter("C:\\ASI\\ASIGestionBilletsBus\\tickets\\tickets.json")) {
+      file.write(ticket.toJSONString());
       file.flush();
     } catch (
         IOException e) {
