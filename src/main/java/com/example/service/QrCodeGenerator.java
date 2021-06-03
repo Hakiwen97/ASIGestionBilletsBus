@@ -11,7 +11,11 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 public class QrCodeGenerator {
+
 
   public static void generateQRCodeImage(String text, int width, int height, String filePath)
       throws WriterException, IOException {
@@ -22,13 +26,16 @@ public class QrCodeGenerator {
     MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
 
   }
-  public static byte[] getQRCodeImage(String text, int width, int height) throws WriterException, IOException {
+  public static byte[] getQRCodeImage(String text,int width, int height) throws WriterException, IOException {
+
     QRCodeWriter qrCodeWriter = new QRCodeWriter();
-    BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
+    BitMatrix bitMatrix = qrCodeWriter.encode(text,BarcodeFormat.QR_CODE, width, height);
 
     ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
     MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
     byte[] pngData = pngOutputStream.toByteArray();
+
+
     return pngData;
   }
 
