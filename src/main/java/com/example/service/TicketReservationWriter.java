@@ -17,14 +17,17 @@ public class TicketReservationWriter {
 
   public void writeTicket(String ligne) throws IOException, ParseException {
 
-    //JSONParser parser=new JSONParser();
-    //JSONArray a = (JSONArray) parser.parse(new FileReader("C:\\ASI\\ASIGestionBilletsBus\\tickets\\tickets.json"));
+    JSONParser parser=new JSONParser();
+    JSONArray a = (JSONArray) parser.parse(new FileReader("C:\\ASI\\ASIGestionBilletsBus\\tickets\\tickets.json"));
 
     JSONObject ticket = new JSONObject();
 
     ticket.put("ligne", ligne);
 
-   // a.add(ticket);
+    //JSONArray tickets = new JSONArray();
+    //tickets.add(ticket);
+
+   a.add(ticket);
 
 
 
@@ -32,13 +35,14 @@ public class TicketReservationWriter {
     try (
 
         FileWriter file = new FileWriter("C:\\ASI\\ASIGestionBilletsBus\\tickets\\tickets.json")) {
-      file.write(ticket.toJSONString());
+      file.write(a.toJSONString());
       file.flush();
     } catch (
         IOException e) {
       e.printStackTrace();
     }
   }
+
 
 
 }
