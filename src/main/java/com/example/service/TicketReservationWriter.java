@@ -15,7 +15,7 @@ import org.json.simple.parser.ParseException;
 public class TicketReservationWriter {
 
 
-  public void writeTicket(String ligne) throws IOException, ParseException {
+  public void writeTicket(String ligne,String mail) throws IOException, ParseException {
 
     JSONParser parser=new JSONParser();
     JSONArray a = (JSONArray) parser.parse(new FileReader("C:\\ASI\\ASIGestionBilletsBus\\tickets\\tickets.json"));
@@ -23,6 +23,7 @@ public class TicketReservationWriter {
     JSONObject ticket = new JSONObject();
 
     ticket.put("ligne", ligne);
+    ticket.put("mail",mail);
 
     //JSONArray tickets = new JSONArray();
     //tickets.add(ticket);
